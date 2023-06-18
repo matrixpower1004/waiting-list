@@ -9,8 +9,8 @@ import java.util.List;
  * date           : 2023-06-18
  * description    :
  */
-@RequestMapping("/api")
-@RestController
+//@RequestMapping("/api")
+//@RestController
 public class APIPlaceController {
 
     @GetMapping("/places")
