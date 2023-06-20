@@ -1,5 +1,7 @@
 package me.matrix.waitinglist.controller.api;
 
+import me.matrix.waitinglist.exception.GeneralException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,23 +11,26 @@ import java.util.List;
  * date           : 2023-06-18
  * description    :
  */
-@RequestMapping("/api)")
+@RequestMapping("/api")
 @RestController
 public class APIEventController {
 
     @GetMapping("/events")
-    public List<String> getEvents() {
-        return List.of("event1", "event2");
+    public List<String> getEvents() throws Exception {
+        throw new HttpRequestMethodNotSupportedException("스프링 에러 테스트");
+//        return List.of("event1", "event2");
     }
 
     @PostMapping("/events")
     public Boolean createEvent() {
-        return true;
+        throw new GeneralException("GeneralException 테스트");
+//        return true;
     }
 
     @GetMapping("/events/{eventId}")
     public String getEvent(@PathVariable Integer eventId) {
-        return "event " + eventId;
+        throw new RuntimeException("RuntimeException 테스트");
+//        return "event " + eventId;
     }
 
     @PutMapping("/events/{eventId}")

@@ -3,6 +3,7 @@ package me.matrix.waitinglist.dto;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+import me.matrix.waitinglist.constant.ErrorCode;
 
 /**
  * author         : Jason Lee
@@ -12,17 +13,16 @@ import lombok.ToString;
 @Getter
 @ToString
 @EqualsAndHashCode(callSuper = true)
-public class APIDataResponse extends APIErrorResponse {
+public class APIDataResponse<T> extends APIErrorResponse {
 
-    private final Object data;
-
-    private APIDataResponse(boolean success, Integer errorCode, String message, Object data) {
-        super(success, errorCode, message);
+    private final T data;
+    private APIDataResponse(T data) {
+        super(true, ErrorCode.OK.getCode(), ErrorCode.OK.getMessage());
         this.data = data;
     }
 
-    public static APIDataResponse of(boolean success, Integer errorCode, String message, Object data) {
-        return new APIDataResponse(success, errorCode, message, data);
+    public static <T> APIDataResponse<T> of(T data) {
+        return new APIDataResponse(data);
     }
 
 }
