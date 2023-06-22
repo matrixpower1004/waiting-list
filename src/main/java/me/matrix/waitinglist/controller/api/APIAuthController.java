@@ -1,8 +1,9 @@
 package me.matrix.waitinglist.controller.api;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import me.matrix.waitinglist.dto.APIDataResponse;
+import me.matrix.waitinglist.dto.AdminRequest;
+import me.matrix.waitinglist.dto.LoginRequest;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * author         : Jason Lee
@@ -13,14 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class APIAuthController {
 
-    @GetMapping("/sign-up")
-    public String signup() {
-        return "done.";
+    @PostMapping("/sign-up")
+    public APIDataResponse<String> signUp(
+            @RequestBody AdminRequest adminRequest) {
+        return APIDataResponse.empty();
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "done.";
+    @PostMapping("/login")
+    public APIDataResponse<String> login(
+            @RequestBody LoginRequest loginRequest) {
+        return APIDataResponse.empty();
     }
 
 }
